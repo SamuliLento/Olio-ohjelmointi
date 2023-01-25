@@ -31,7 +31,7 @@ public class App {
                         hedgehog = new Hedgehog(name, age);
                         break;
                     case 3:
-                        System.out.println("Kuinka monta kierrosta:");
+                        System.out.println("Kuinka monta kierrosta?");
                         int rounds = Integer.parseInt(sc.nextLine());
                         hedgehog.run(rounds);
                         break;
