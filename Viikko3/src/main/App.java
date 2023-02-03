@@ -31,11 +31,11 @@ public class App {
                         name = sc.nextLine();
                         System.out.println("Anna eläimen ikä:");
                         age = Integer.parseInt(sc.nextLine());
-                        zoo.addAnimal(null);
+                        Animal animal = new Animal(species, name, age);
+                        zoo.addAnimal(animal);
                         break;
                     case 2:
-                        System.out.println("Anna siilin nimi:");
-
+                        zoo.listAnimals();
                         break;
                     case 3:
                         System.out.println("Kuinka monta kierrosta?");

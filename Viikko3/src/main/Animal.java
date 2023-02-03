@@ -11,4 +11,16 @@ public class Animal {
         name = n;
         age = a;
     }
+
+    public String getSpecies () {
+        return species;
+    }
+
+    public String getName () {
+        return name;
+    }
+
+    public int getAge () {
+        return age;
+    }
 }
