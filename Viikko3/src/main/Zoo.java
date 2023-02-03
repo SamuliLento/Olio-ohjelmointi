@@ -24,7 +24,11 @@ public class Zoo {
         }
     }
 
-    public void runAnimals () {
-
+    public void runAnimals (int r) {
+        for (Animal animal : animals) {
+            for (int i = 1; i <= r; i++) {
+                System.out.println(animal.getName() + " juoksee kovaa vauhtia!");
+            }
+        }
     }
 }

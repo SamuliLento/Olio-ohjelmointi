@@ -8,6 +8,7 @@ public class App {
         String species;
         String name;
         int age;
+        int rounds;
 
         Scanner sc = new Scanner(System.in);
 
@@ -39,7 +40,8 @@ public class App {
                         break;
                     case 3:
                         System.out.println("Kuinka monta kierrosta?");
-
+                        rounds = Integer.parseInt(sc.nextLine());
+                        zoo.runAnimals(rounds);
                         break;
                     case 0:
                         System.out.println("Kiitos ohjelman käytöstä.");
