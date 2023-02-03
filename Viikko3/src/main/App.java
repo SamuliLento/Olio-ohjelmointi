@@ -4,14 +4,20 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        
+
+        String species;
+        String name;
+        int age;
+
         Scanner sc = new Scanner(System.in);
 
-        Hedgehog hedgehog = new Hedgehog();
+        System.out.println("Anna eläintarhalle nimi:");
+        name = sc.nextLine();
+        Zoo zoo = new Zoo(name);
 
         boolean exit = false;
         while (!exit) {
-            System.out.println("1) Pistä siili puhumaan, 2) Luo uusi siili, 3) Juoksuta siiliä, 0) Lopeta ohjelma");
+            System.out.println("1) Luo uusi eläin, 2) Listaa kaikki eläimet, 3) Juoksuta eläimiä, 0) Lopeta ohjelma");
 
             if (sc.hasNext()) {
                 int i = 0;
@@ -19,21 +25,21 @@ public class App {
 
                 switch (i) {
                     case 1:
-                        System.out.println("Mitä siili sanoo:");
-                        String text = sc.nextLine();
-                        hedgehog.speak(text);
+                        System.out.println("Mikä laji?");
+                        species = sc.nextLine();
+                        System.out.println("Anna eläimen nimi:");
+                        name = sc.nextLine();
+                        System.out.println("Anna eläimen ikä:");
+                        age = Integer.parseInt(sc.nextLine());
+                        zoo.addAnimal(null);
                         break;
                     case 2:
                         System.out.println("Anna siilin nimi:");
-                        String name = sc.nextLine();
-                        System.out.println("Anna siilin ikä:");
-                        int age = Integer.parseInt(sc.nextLine());
-                        hedgehog = new Hedgehog(name, age);
+
                         break;
                     case 3:
                         System.out.println("Kuinka monta kierrosta?");
-                        int rounds = Integer.parseInt(sc.nextLine());
-                        hedgehog.run(rounds);
+
                         break;
                     case 0:
                         System.out.println("Kiitos ohjelman käytöstä.");
