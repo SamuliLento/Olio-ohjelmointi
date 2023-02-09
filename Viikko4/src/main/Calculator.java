@@ -1,5 +1,7 @@
 package main;
 
+import java.util.Arrays;
+
 public class Calculator {
 
     public void listGrades(Student s) {
@@ -9,8 +11,8 @@ public class Calculator {
     }
     
     public double getAverageGrade (Student s) {
-        double sum = 0;
         int i = 0;
+        double sum = 0;
         double average;
 
         for (Grade grade : s.getGrades()) {
@@ -26,8 +28,26 @@ public class Calculator {
     }
 
     public double getMedianGrade (Student s) {
-        double median = 0;
+        int[] grades = new int[s.getGrades().size()];
+        int i = 0;
+        double sum;
+        double median;
 
+        for (Grade grade : s.getGrades()) {
+            grades[i] = grade.getGrade();
+            i++;
+        }
+        if (i == 0) {
+            median = 0;
+        } else {
+            Arrays.sort(grades);
+            if ((grades.length % 2) == 0) {
+                sum = grades[(grades.length) / 2] + grades[((grades.length) / 2) - 1];
+                median = sum / 2;
+            } else {
+                median = grades[(grades.length - 1) / 2];
+            }
+        }
         return median;
     }
 }
