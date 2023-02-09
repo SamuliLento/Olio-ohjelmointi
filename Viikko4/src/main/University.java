@@ -54,11 +54,13 @@ public class University {
     public void loadStudents () {
         try {
             ObjectInputStream studentReader = new ObjectInputStream(new FileInputStream(FILENAME));
-
+            students = (ArrayList<Student>) studentReader.readObject();
             studentReader.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
