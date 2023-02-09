@@ -11,9 +11,12 @@ public class App {
         int j;
         String course;
         int grade;
+        double average;
+        double median;
 
         Scanner sc = new Scanner(System.in);
         University university = new University();
+        Calculator calculator = new Calculator();
 
         boolean exit = false;
         while (!exit) {
@@ -51,21 +54,23 @@ public class App {
                         System.out.println("Minkä opiskelijan suoritteet listataan?");
                         j = Integer.parseInt(sc.nextLine());
                         student = university.getStudent(j);
-
+                        calculator.listGrades(student);
                         break;
                     case 5:
                         university.chooseStudent();
                         System.out.println("Minkä opiskelijan suoritteiden keskiarvo lasketaan?");
                         j = Integer.parseInt(sc.nextLine());
                         student = university.getStudent(j);
-
+                        average = calculator.getAverageGrade(student);
+                        System.out.println("Keskiarvo on " + average);
                         break;
                     case 6:
                         university.chooseStudent();
                         System.out.println("Minkä opiskelijan suoritteiden mediaani lasketaan?");
                         j = Integer.parseInt(sc.nextLine());
                         student = university.getStudent(j);
-
+                        median = calculator.getMedianGrade(student);
+                        System.out.println("Mediaani on " + median);
                         break;
                     case 7:
                         university.saveStudents();

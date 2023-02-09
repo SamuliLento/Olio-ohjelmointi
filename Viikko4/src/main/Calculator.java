@@ -9,8 +9,19 @@ public class Calculator {
     }
     
     public double getAverageGrade (Student s) {
-        double average = 0;
+        double sum = 0;
+        int i = 0;
+        double average;
 
+        for (Grade grade : s.getGrades()) {
+            sum += grade.getGrade();
+            i++;
+        }
+        if (i == 0) {
+            average = 0;
+        } else {
+            average = sum / i;
+        }
         return average;
     }
 
