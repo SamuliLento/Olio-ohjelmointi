@@ -7,6 +7,10 @@ public class App {
 
         String name;
         int id;
+        Student student;
+        int j;
+        String course;
+        int grade;
 
         Scanner sc = new Scanner(System.in);
         University university = new University();
@@ -25,25 +29,43 @@ public class App {
                         name = sc.nextLine();
                         System.out.println("Anna opiskelijan opiskelijanumero:");
                         id = Integer.parseInt(sc.nextLine());
-                        Student student = new Student(name, id);
+                        student = new Student(name, id);
                         university.addStudent(student);
                         break;
                     case 2:
                         university.listStudents();
                         break;
                     case 3:
-                        university.listStudents();
+                        university.chooseStudent();
                         System.out.println("Mille opiskelijalle suorite lisätään?");
-                        
+                        j = Integer.parseInt(sc.nextLine());
+                        student = university.getStudent(j);
+                        System.out.println("Mille kurssille suorite lisätään?");
+                        course = sc.nextLine();
+                        System.out.println("Mikä arvosana kurssille lisätään?");
+                        grade = Integer.parseInt(sc.nextLine());
+                        student.addGrade(course, grade);
                         break;
                     case 4:
-                        
+                        university.chooseStudent();
+                        System.out.println("Minkä opiskelijan suoritteet listataan?");
+                        j = Integer.parseInt(sc.nextLine());
+                        student = university.getStudent(j);
+
                         break;
                     case 5:
-                        
+                        university.chooseStudent();
+                        System.out.println("Minkä opiskelijan suoritteiden keskiarvo lasketaan?");
+                        j = Integer.parseInt(sc.nextLine());
+                        student = university.getStudent(j);
+
                         break;
                     case 6:
-                        
+                        university.chooseStudent();
+                        System.out.println("Minkä opiskelijan suoritteiden mediaani lasketaan?");
+                        j = Integer.parseInt(sc.nextLine());
+                        student = university.getStudent(j);
+
                         break;
                     case 7:
                         university.saveStudents();
