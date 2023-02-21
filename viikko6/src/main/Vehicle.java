@@ -18,6 +18,6 @@ public class Vehicle {
             System.out.println("Kulkuneuvo: " + manufacturer + " " + model);
         }
         engine.printSpecs();
-        System.out.println("Huippunopeus: " + topSpeed + "km/h");
+        System.out.println("Huippunopeus: " + topSpeed + "km/h\n");
     }
 }
