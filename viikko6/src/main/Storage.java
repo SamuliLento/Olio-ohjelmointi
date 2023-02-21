@@ -19,4 +19,31 @@ public class Storage {
             vehicle.printSpecs();
         }
     }
+
+    public void driveCars () {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Car) {
+                Car car = (Car) vehicle;
+                car.drive();
+            }
+        }
+    }
+
+    public void flyPlanes () {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Plane) {
+                Plane plane = (Plane) vehicle;
+                plane.fly();
+            }
+        }
+    }
+
+    public void sailShips () {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Ship) {
+                Ship ship = (Ship) vehicle;
+                ship.sail();
+            }
+        }
+    }
 }

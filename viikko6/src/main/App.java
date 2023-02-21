@@ -53,13 +53,13 @@ public class App {
                             storage.listVehicles();
                             break;
                         case 3:
-
+                            storage.driveCars();
                             break;
                         case 4:
-
+                            storage.flyPlanes();
                             break;
                         case 5:
-
+                            storage.sailShips();
                             break;
                         case 0:
                             System.out.println("Kiitos ohjelman käytöstä.");
