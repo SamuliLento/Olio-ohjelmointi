@@ -14,8 +14,6 @@ public class Vehicle {
             System.out.println("Lentokone: " + manufacturer + " " + model);
         } else if (this instanceof Ship) {
             System.out.println("Laiva: " + manufacturer + " " + model);
-        } else {
-            System.out.println("Kulkuneuvo: " + manufacturer + " " + model);
         }
         engine.printSpecs();
         System.out.println("Huippunopeus: " + topSpeed + "km/h\n");
