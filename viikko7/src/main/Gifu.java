@@ -12,6 +12,7 @@ public class Gifu {
         university = u;
         courses = new ArrayList<Course>();
         students = new ArrayList<Student>();
+        enrollments = new ArrayList<Enrollment>();
     }
 
     // Course methods
@@ -57,6 +58,27 @@ public class Gifu {
     // Enrollment methods
 
     public void enrollStudent(Student student, Course course) {
-        
+        Enrollment enrollment = new Enrollment(student, course);
+        enrollments.add(enrollment);
+    }
+
+    public ArrayList<Enrollment> getEnrollments (Course course) {
+        ArrayList<Enrollment> courseEnrollments = new ArrayList<Enrollment>();
+            for(Enrollment enrollment : enrollments) {
+                if (enrollment.getCourse() == course) {
+                    courseEnrollments.add(enrollment);
+                }
+            }
+        return courseEnrollments;
+    }
+
+    public ArrayList<Enrollment> getEnrollments (Student student) {
+        ArrayList<Enrollment> studentEnrollments = new ArrayList<Enrollment>();
+            for(Enrollment enrollment : enrollments) {
+                if (enrollment.getStudent() == student) {
+                    studentEnrollments.add(enrollment);
+                }
+            }
+        return studentEnrollments;
     }
 }

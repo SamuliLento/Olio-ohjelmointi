@@ -1,18 +1,20 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
 
-        String university;
-        String courseName;
-        String courseID;
-        int maxStudents;
+        String name;
+        String id;
+        int maxNumberOfStudents;
         Course course;
-        String studentName;
-        String studentID;
         Student student;
+        int j;
+        ArrayList<Course> courses;
+        ArrayList<Enrollment> enrollments;
+        int grade;
 
         int i = 0;
 
@@ -20,9 +22,9 @@ public class App {
 
         System.out.println("Tervetuloa Gifu-järjestelmään");
         System.out.println("Mille yliopistolle haluat ottaa järjestelmän käyttöön?");
-        university = sc.nextLine();
+        name = sc.nextLine();
 
-        Gifu gifu = new Gifu(university);
+        Gifu gifu = new Gifu(name);
 
         boolean exit = false;
         while (!exit) {
@@ -35,20 +37,20 @@ public class App {
                     switch (i) {
                         case 1:
                             System.out.println("Anna kurssin nimi:");
-                            courseName = sc.nextLine();
+                            name = sc.nextLine();
                             System.out.println("Anna kurssin ID:");
-                            courseID = sc.nextLine();
+                            id = sc.nextLine();
                             System.out.println("Anna kurssin maksimi opiskelijamäärä:");
-                            maxStudents = Integer.parseInt(sc.nextLine());
-                            course = new Course(courseName, courseID, maxStudents);
+                            maxNumberOfStudents = Integer.parseInt(sc.nextLine());
+                            course = new Course(name, id, maxNumberOfStudents);
                             gifu.addCourse(course);
                             break;
                         case 2:
                             System.out.println("Anna opiskelijan nimi:");
-                            studentName = sc.nextLine();
+                            name = sc.nextLine();
                             System.out.println("Anna opiskelijan opiskelijanumero:");
-                            studentID = sc.nextLine();
-                            student = new Student(studentName, studentID);
+                            id = sc.nextLine();
+                            student = new Student(name, id);
                             gifu.addStudent(student);
                             break;
                         case 3:
@@ -58,19 +60,58 @@ public class App {
                             gifu.listStudents();
                             break;
                         case 5:
-
+                            gifu.listCourses();
+                            System.out.println("Mille kurssille haluat lisätä opiskelijan? Syötä kurssin numero:");
+                            j = Integer.parseInt(sc.nextLine());
+                            course = gifu.getCourse(j);
+                            gifu.listStudents();
+                            System.out.println("Minkä opiskelijan haluat lisätä kurssille? Syötä opiskelijan numero:");
+                            j = Integer.parseInt(sc.nextLine());
+                            student = gifu.getStudent(j);
+                            gifu.enrollStudent(student, course);
                             break;
                         case 6:
-
+                            gifu.listCourses();
+                            System.out.println("Minkä kurssin haluat arvostella? Syötä kurssin numero:");
+                            j = Integer.parseInt(sc.nextLine());
+                            course = gifu.getCourse(j);
+                            enrollments = gifu.getEnrollments(course);
+                            for(Enrollment enrollment : enrollments) {
+                                System.out.println("Anna arvosana opiskelijalle " + enrollment.getStudent().getInformation());
+                                grade = Integer.parseInt(sc.nextLine());
+                                enrollment.gradeCourse(grade);
+                            }
                             break;
                         case 7:
-
+                            gifu.listCourses();
+                            System.out.println("Minkä kurssin opiskelijat haluat listata? Syötä kurssin numero:");
+                            j = Integer.parseInt(sc.nextLine());
+                            course = gifu.getCourse(j);
+                            enrollments = gifu.getEnrollments(course);
+                            for(Enrollment enrollment : enrollments) {
+                                System.out.println(enrollment.getStudent().getInformation() + ", arvosana: " + enrollment.getGrade());
+                            }
                             break;
                         case 8:
-
+                            gifu.listStudents();
+                            System.out.println("Minkä opiskelijan arvosanat haluat listata? Syötä opiskelijan numero:");
+                            j = Integer.parseInt(sc.nextLine());
+                            student = gifu.getStudent(j);
+                            System.out.println("Opiskelijan " + student.getInformation() + " arvosanat:");
+                            enrollments = gifu.getEnrollments(student);
+                            for(Enrollment enrollment : enrollments) {
+                                System.out.println(enrollment.getCourse().getInformation() + ", arvosana: " + enrollment.getGrade());
+                            }
                             break;
                         case 9:
-
+                            courses = gifu.getCourses();
+                            for(Course c : courses) {
+                                System.out.println(c.getInformation());
+                                enrollments = gifu.getEnrollments(c);
+                                for(Enrollment enrollment : enrollments) {
+                                    System.out.println(enrollment.getStudent().getInformation() + ", arvosana: " + enrollment.getGrade());
+                                }
+                            }
                             break;
                         case 0:
                             System.out.println("Kiitos ohjelman käytöstä.");
